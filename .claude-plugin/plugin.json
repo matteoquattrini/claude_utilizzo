@@ -1,0 +1,6 @@
+{
+  "name": "utilizzo",
+  "version": "0.1.0",
+  "description": "Timeline della sessione, indicatore di contesto e panoramica di token, costi e limiti dell'account.",
+  "types": "./types/index.d.ts"
+}
