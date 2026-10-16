@@ -15,15 +15,52 @@ Note:
 
 ## Installazione
 
-Da un terminale con Claude Code:
+Il comando `/plugin install` funziona solo in **Claude Code da terminale** (il comando `claude`), non nella scheda Code dell'app desktop. Una volta installato da terminale a livello utente, il mod si carica anche nelle sessioni locali dell'app desktop.
+
+### 1. Installa Claude Code da terminale (se non lo hai già)
+
+Da PowerShell, con l'installer ufficiale:
+
+```
+irm https://claude.ai/install.ps1 | iex
+```
+
+oppure con npm (serve Node.js):
+
+```
+npm install -g @anthropic-ai/claude-code
+```
+
+Chiudi e riapri il terminale. Al primo avvio ti chiede di accedere con il tuo account.
+
+### 2. Avvia `claude`
+
+Su Windows, in PowerShell, il comando `claude` può fallire con l'errore *"L'esecuzione di script è disabilitata nel sistema in uso"* (`PSSecurityException`), perché Windows blocca lo script `claude.ps1`. Due soluzioni:
+
+- **Senza cambiare impostazioni:** avvia `claude.cmd` invece di `claude`, oppure usa il Prompt dei comandi (`cmd`), dove `claude` funziona normalmente.
+- **Soluzione definitiva:** abilita gli script solo per il tuo utente (modifica un'impostazione di sicurezza di Windows, limitata al tuo utente):
+
+  ```
+  Set-ExecutionPolicy -Scope CurrentUser -ExecutionPolicy RemoteSigned
+  ```
+
+### 3. Installa il mod
+
+Nel prompt di Claude Code scrivi:
 
 ```
 /plugin install utilizzo --marketplace matteoquattrini/claude_utilizzo
 ```
 
-Rispondi `y` per aggiungere il marketplace, poi scegli l'ambito. Il mod è attivo subito.
+Rispondi `y` quando chiede di aggiungere il marketplace, poi scegli l'ambito (il primo è "utente"). Il mod è attivo subito.
 
-Per provarlo da una cartella locale senza installarlo:
+### 4. Usalo
+
+La banda compare da sola sopra il prompt. Per il pannello completo scrivi `/utilizzo` oppure premi **Dettagli** nella banda.
+
+## Provarlo da una cartella locale
+
+Senza installarlo, clonando questo repository:
 
 ```
 claude --plugin-dir <cartella-del-repository>
